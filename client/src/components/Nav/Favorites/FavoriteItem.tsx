@@ -8,7 +8,7 @@ import type { FavoriteModel } from '~/store/favorites';
 import type t from 'librechat-data-provider';
 import EndpointIcon from '~/components/Endpoints/EndpointIcon';
 import { useNewConvo, useFavorites, useLocalize } from '~/hooks';
-import { renderAgentAvatar, cn } from '~/utils';
+import { AgentAvatar, cn } from '~/utils';
 
 type FavoriteItemProps = {
   item: t.Agent | FavoriteModel;
@@ -71,7 +71,7 @@ export default function FavoriteItem({ item, type }: FavoriteItemProps) {
 
   const renderIcon = () => {
     if (type === 'agent') {
-      return renderAgentAvatar(item as t.Agent, { size: 'icon', className: 'mr-2' });
+      return <AgentAvatar agent={item as t.Agent} size="icon" className="mr-2" />;
     }
     const model = item as FavoriteModel;
     return (

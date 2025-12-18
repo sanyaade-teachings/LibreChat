@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Label } from '@librechat/client';
 import type t from 'librechat-data-provider';
 import { useLocalize, TranslationKeys, useAgentCategories } from '~/hooks';
-import { cn, renderAgentAvatar, getContactDisplayName } from '~/utils';
+import { cn, AgentAvatar, getContactDisplayName } from '~/utils';
 
 interface AgentCardProps {
   agent: t.Agent; // The agent data to display
@@ -59,7 +59,9 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, onClick, className = '' })
         <div className="flex items-center gap-3">
           {/* Left column: Avatar and Category */}
           <div className="flex h-full flex-shrink-0 flex-col justify-between space-y-4">
-            <div className="flex-shrink-0">{renderAgentAvatar(agent, { size: 'sm' })}</div>
+            <div className="flex-shrink-0">
+              <AgentAvatar agent={agent} size="sm" />
+            </div>
 
             {/* Category tag */}
             {agent.category && (
